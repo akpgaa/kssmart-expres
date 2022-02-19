@@ -4,6 +4,7 @@ const config = require("../../config");
 
 var whitelist = [
     "localhost:3000",
+    "ksmart-react.herokuapp.com"
     // "localhost:5000",
 ];
 
