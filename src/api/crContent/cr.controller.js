@@ -168,7 +168,8 @@ const GetRandomNumber = async (req, res, next) => {
     let min = 0;
     let max = req.query.max
     let random = Math.floor(Math.random() * (max - min + 1) + min)
-    res.send({ data: random })
+    let percent = (100 * random) / max
+    res.send({ data: random, percent: percent })
   } catch (error) {
     console.error(chalk.red(error));
     res.status(500);
