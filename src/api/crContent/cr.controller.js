@@ -129,7 +129,6 @@ async function UserPage(id) {
   result.data = await Model.getFreedom(`*`, 'tbl_user', 'status=0', 1, 'id desc');
   return result
 }
-
 async function ProductPage(id, body) {
   let result = {}
   result.data = await Model.getFreedom(`*`, 'tbl_product', `user=${body.id}`, 1, 'id desc');
@@ -163,9 +162,23 @@ const Delete = async (req, res, next) => {
     next(error);
   }
 };
+
+const GetRandomNumber = async (req, res, next) => {
+  try {
+    let min = 0;
+    let max = req.query.max
+    let random = Math.floor(Math.random() * (max - min + 1) + min)
+    res.send({ data: random })
+  } catch (error) {
+    console.error(chalk.red(error));
+    res.status(500);
+    next(error);
+  }
+}
 module.exports = {
   Updatedata,
   loginCheck,
   GetData,
-  Delete
+  Delete,
+  GetRandomNumber
 };

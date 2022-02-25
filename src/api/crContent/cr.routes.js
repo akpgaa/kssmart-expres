@@ -48,5 +48,6 @@ router
     .route("/delete")
     .post(controller.Delete);
 router.route('/loginCheck').put(controller.loginCheck);
+router.route('/GetRandomNumber').get(controller.GetRandomNumber);
 
 module.exports = router;
